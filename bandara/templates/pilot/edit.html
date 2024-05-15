@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java - 2231130</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex justify-center items-center min-h-screen">
+      <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-lg">
+          <h1
+            class="text-center text-2xl font-bold text-indigo-600 sm:text-3xl"
+          >
+            Form Edit Pilot
+          </h1>
+
+          <p class="mx-auto mt-4 max-w-md text-center text-gray-500">
+            Isi form dibawah untuk mengubah data pilot .
+          </p>
+
+          <form
+            action="{% url 'updatepilot' pilot.id %}"
+            method="POST"
+            class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+          >
+            {% csrf_token %}
+            <div>
+              <div class="relative">
+                <label for="namapilot" class="ms-4">Nama Pilot</label>
+                <input
+                  type="text"
+                  id="namapilot"
+                  name="nama_pilot_field"
+                  value="{{pilot.nama_pilot}}"
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <div class="relative">
+                <label for="nomortelepon" class="ms-4"
+                  >Nomor Telepon Pilot</label
+                >
+
+                <input
+                  type="text"
+                  id="nomortelepon"
+                  value="{{pilot.nomor_telepon}}"
+                  name="nomor_telepon_field"
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  placeholder="Nomor Telepon Pilot"
+                  required
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+            >
+              Update
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

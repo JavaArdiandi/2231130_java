@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java - 2231130</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-400">
+    {% include 'utils/list.html' %}
+    <div class="flex-col mx-16 justify-center mt-8">
+      <a
+        href="{% url 'addpilot' %}"
+        class="bg-black text-white rounded px-2 py-2"
+        >Tambah Pilot</a
+      >
+      <div
+        class="overflow-x-auto mt-5 rounded-lg border border-gray-200 dark:border-gray-700"
+      >
+        <table
+          class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm dark:divide-gray-700 dark:bg-gray-900"
+        >
+          <thead class="ltr:text-left rtl:text-right">
+            <tr>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                #
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Nama Pilot
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Nomor Telepon Pilot
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Aksi
+              </th>
+            </tr>
+          </thead>
+
+          <tbody
+            class="divide-y text-center divide-gray-200 dark:divide-gray-700"
+          >
+            {% for pilot in list_pilot %}
+            <tr>
+              <td
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                {{forloop.counter}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                {{pilot.nama_pilot}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                {{pilot.nomor_telepon}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                <a
+                  href="editpilot/{{pilot.id}}"
+                  class="bg-green-700 text-white rounded-md shadow-md text-center py-2 px-2"
+                  >Ubah</a
+                >
+                <a
+                  href="deletepilot/{{pilot.id}}"
+                  class="bg-red-700 ms-2 text-white rounded-md shadow-md text-center py-2 px-2"
+                  >Hapus</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

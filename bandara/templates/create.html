@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java - 2231130</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex justify-center items-center min-h-screen">
+      <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-lg">
+          <h1
+            class="text-center text-2xl font-bold text-indigo-600 sm:text-3xl"
+          >
+            Form Tambah Bandara
+          </h1>
+
+          <p class="mx-auto mt-4 max-w-md text-center text-gray-500">
+            Isi form dibawah untuk menambahkan data bandara baru.
+          </p>
+
+          <form
+            action="{% url 'storebandara' %}"
+            method="POST"
+            class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+          >
+            {% csrf_token %}
+            <div>
+              <div class="relative">
+                <input
+                  type="text"
+                  name="nama_bandara_field"
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  placeholder="Nama Bandara"
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <div class="relative">
+                <input
+                  type="text"
+                  name="lokasi_bandara_field"
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  placeholder="Lokasi Bandara"
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <div class="relative">
+                <label for="maskapai" class="ms-1">Maskapai</label>
+                <select
+                  name="maskapai_field"
+                  id="maskapai"
+                  class="w-full py-2 rounded-md border-2 mt-2 border-black"
+                >
+                  {% for maskapai in list_maskapai %}
+
+                  <option value="{{maskapai.id}}">
+                    {{maskapai.nama_maskapai}}
+                  </option>
+
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <div class="relative">
+                <label for="pilot" class="ms-1">Pilot</label>
+                <select
+                  name="pilot_field"
+                  id="pilot"
+                  class="w-full py-2 rounded-md border-2 mt-2 border-black"
+                >
+                  {% for pilot in list_pilot %}
+
+                  <option value="{{pilot.id}}">
+                    {{pilot.nama_pilot}} - {{pilot.nomor_telepon}}
+                  </option>
+
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <div class="relative">
+                <label for="pesawat" class="ms-1">Pesawat</label>
+                <select
+                  name="pesawat_field"
+                  id="pesawat"
+                  class="w-full py-2 rounded-md border-2 mt-2 border-black"
+                >
+                  {% for pesawat in list_pesawat %}
+
+                  <option value="{{pesawat.id}}">
+                    {{pesawat.nama_pesawat}} - {{pesawat.jenis_pesawat}}
+                  </option>
+
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <div class="relative">
+                <input
+                  type="number"
+                  name="harga_tiket_field"
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  placeholder="Harga Tiket"
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <div class="relative">
+                <input
+                  type="text"
+                  name="jalur_field"
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  placeholder="Jalur Berangkat - Jalur Pulang"
+                  required
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+            >
+              Tambah Pilot
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

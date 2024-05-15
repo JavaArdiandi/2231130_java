@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java - 2231130</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-400">
+    {% include 'utils/list.html' %}
+    <div class="flex-col mx-16 justify-center mt-8">
+      <a
+        href="{% url 'addbandara' %}"
+        class="bg-black text-white rounded px-2 py-2"
+        >Tambah Bandara</a
+      >
+      <div
+        class="overflow-x-auto mt-5 rounded-lg border border-gray-200 dark:border-gray-700"
+      >
+        <table
+          class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm dark:divide-gray-700 dark:bg-gray-900"
+        >
+          <thead class="ltr:text-left rtl:text-right">
+            <tr>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                #
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Nama Bandara
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Lokasi Bandara
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Maskapai Penerbangan
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Pilot
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Pesawat
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Harga Tiket Pesawat
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Jalur Penerbangan
+              </th>
+              <th
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                Aksi
+              </th>
+            </tr>
+          </thead>
+
+          <tbody
+            class="divide-y text-center divide-gray-200 dark:divide-gray-700"
+          >
+            {% for bandara in list_bandara %}
+            <tr>
+              <td
+                class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
+              >
+                {{forloop.counter}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                {{bandara.nama_bandara}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                {{bandara.lokasi_bandara}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                {{bandara.maskapai.nama_maskapai}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                {{bandara.pilot.nama_pilot}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                {{bandara.pesawat.nama_pesawat}} |
+                {{bandara.pesawat.jenis_pesawat}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                Rp {{bandara.harga_tiket}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                {{bandara.jalur}}
+              </td>
+              <td
+                class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
+              >
+                <a
+                  href="editbandara/{{bandara.id}}"
+                  class="bg-green-700 text-white rounded-md shadow-md text-center py-2 px-2"
+                  >Ubah</a
+                >
+                <a
+                  href="deletebandara/{{bandara.id}}"
+                  class="bg-red-700 ms-2 text-white rounded-md shadow-md text-center py-2 px-2"
+                  >Hapus</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
